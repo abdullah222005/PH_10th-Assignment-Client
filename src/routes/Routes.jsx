@@ -6,6 +6,9 @@ import ErrorPage from '../pages/Error/ErrorPage';
 import AllBooks from '../pages/All Books/AllBooks';
 import LoginPage from '../pages/Login Page/LoginPage';
 import RegisterPage from '../pages/Register Page/RegisterPage.jsx';
+import AddBook from '../pages/Add Book/AddBook.jsx';
+import MyBooks from '../pages/My Books/MyBooks.jsx';
+import BookDetails from '../pages/Book Details/BookDetails.jsx';
 
 
 
@@ -33,12 +36,16 @@ export const router = createBrowserRouter([
         Component: RegisterPage,
       },
       {
-        path: "/all-books",
-        Component: AllBooks,
+        path: "/add-book",
+        Component: AddBook,
       },
       {
-        path: "/all-books",
-        Component: AllBooks,
+        path: "/myBooks",
+        Component: MyBooks,
+      },
+      {
+        path: "/book-details/:id",
+        Component: BookDetails,
       },
     ],
   },
