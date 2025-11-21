@@ -11,7 +11,6 @@ import { createRoot } from 'react-dom/client';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-
   <RouterProvider router={router} />
   <ToastContainer position="top-right" autoClose={2000} />
   <Toaster position="top-right" toastOptions={{ duration: 2500 }} />

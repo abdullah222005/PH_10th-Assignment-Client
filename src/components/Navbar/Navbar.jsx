@@ -1,24 +1,13 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import Home from '../../pages/Home/Home';
-import ThemeController from '../../utils/ThemeControler/ThemeControler';
-
-// Active link style function
-const getLinkStyle = ({ isActive }) => {
-    return {
-        color: isActive ? '#2563eb' : '', // Blue color when active
-        borderBottom: isActive ? '2px solid #2563eb' : 'none', // Underline when active
-        paddingBottom: '2px'
-    };
-};
 
 const Navbar = () => {
 
     const links = <>
-        <li><NavLink to="/" style={getLinkStyle}>Home</NavLink></li>
-        <li><NavLink to="/all-books" style={getLinkStyle}>All Books</NavLink></li>
-        <li><NavLink to="/add-book" style={getLinkStyle}>Add Book</NavLink></li>
-        <li><NavLink to="/myBooks" style={getLinkStyle}>My Books</NavLink></li>
+        <li><NavLink to="/">Home</NavLink></li>
+        <li><NavLink to="/all-books">All Books</NavLink></li>
+        <li><NavLink to="/add-book">Add Book</NavLink></li>
+        <li><NavLink to="/myBooks">My Books</NavLink></li>
         </>
     return (
       <div>
@@ -38,19 +27,13 @@ const Navbar = () => {
           </div>
           <div className="navbar-end">
             <button className="mr-5 btn">
-              <NavLink to="/auth-Login" style={getLinkStyle}>
-                Login
-              </NavLink>
+              <Link to="/auth/Login">Login</Link>
             </button>
             <button className="mr-5 btn">
-              <NavLink to="/auth-Register" style={getLinkStyle}>
-                Register
-              </NavLink>
+              <Link to="/auth/Register">Register</Link>
             </button>
             <button className="btn">
-              <NavLink to="/auth-LogOut" style={getLinkStyle}>
-                Log Out
-              </NavLink>
+              <Link to="/auth/LogOut">Log Out</Link>
             </button>
           </div>
         </div>

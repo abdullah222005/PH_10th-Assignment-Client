@@ -2,8 +2,10 @@ import React from 'react';
 import footerLine from '../../assets/footer-Line-1.png'
 import newsletter from '../../assets/newsletter.png'
 import { Newspaper } from 'lucide-react';
+import { useLocation } from 'react-router-dom';
 
 const Footer = () => {
+  const location = useLocation();
     return (
       <div>
         <footer
@@ -14,32 +16,35 @@ const Footer = () => {
           }}
           className="bg-[#FCFAE0] text-black pt-10"
         >
-          <newsletter>
-            <div className="text-center">
-              <img className="mx-auto" src={newsletter} alt="" />
-              <p className="text-3xl text-gray-500">News & Updates</p>
-              <h1 className="font-bold text-xl my-2">
-                SUBSCRIBE NOW FOR COUPONS
-              </h1>
-              <p className="max-w-[555px] mx-auto text-gray-400 mt-3 mb-5">
-                You can connect with us via subscribing our newsletter. You
-                will get mails from us of various books and also get special
-                coupons. Thanks for staying with us.{" "}
-              </p>
-            </div>
-            <div className="flex justify-center items-center my-5 mb-10">
-              <Newspaper />
-              <input
-                className="w-111 ml-3 outline-0 bg-white p-4 rounded-3xl"
-                type="email"
-                placeholder="Input your email here"
-                name="email"
-              />
-              <button className="ml-5 text-3xl text-gray-500 font-semibold hover:bg-[#68e6ff] px-6 py-2 pb-3 rounded-3xl cursor-pointer border-2 border-gray-300">
-                Subscribe
-              </button>
-            </div>
-          </newsletter>
+          {location.pathname === "/" && (
+            <newsletter>
+              <div className="text-center">
+                <img className="mx-auto" src={newsletter} alt="" />
+                <p className="text-3xl text-gray-500">News & Updates</p>
+                <h1 className="font-bold text-xl my-2">
+                  SUBSCRIBE NOW FOR COUPONS
+                </h1>
+                <p className="max-w-[555px] mx-auto text-gray-400 mt-3 mb-5">
+                  You can connect with us via subscribing our newsletter. You
+                  will get mails from us of various books and also get special
+                  coupons. Thanks for staying with us.{" "}
+                </p>
+              </div>
+              <div className="flex justify-center items-center my-5 mb-10">
+                <Newspaper />
+                <input
+                  className="w-111 ml-3 outline-0 bg-white p-4 rounded-3xl"
+                  type="email"
+                  placeholder="Input your email here"
+                  name="email"
+                />
+                <button className="ml-5 text-3xl text-gray-500 font-semibold hover:bg-[#68e6ff] px-6 py-2 pb-3 rounded-3xl cursor-pointer border-2 border-gray-300">
+                  Subscribe
+                </button>
+              </div>
+            </newsletter>
+          )}
+
           <div className="max-w-10/12 mx-auto footer sm:footer-horizontal mt-5">
             <nav>
               <h1 className="charm-bold text-3xl">The Book Heaven</h1>
