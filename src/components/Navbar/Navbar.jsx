@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import Home from '../../pages/Home/Home';
+import ThemeController from '../../utils/ThemeControler/ThemeControler';
 
 // Active link style function
 const getLinkStyle = ({ isActive }) => {
@@ -20,32 +21,40 @@ const Navbar = () => {
         <li><NavLink to="/myBooks" style={getLinkStyle}>My Books</NavLink></li>
         </>
     return (
-        <div>
-            <div className="navbar bg-base-100 shadow-sm mx-auto">
-                <div className="navbar-start">
-                    <div className="dropdown">
-                        <label tabIndex={0} className="btn btn-ghost lg:hidden">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
-                        </label>
-                        <ul
-                            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow">
-                            {links}
-                        </ul>
-                    </div>
-                    <a className="charm-bold btn btn-ghost text-2xl">The Book Heaven</a>
-                </div>
-                <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal px-1 gap-10">
-                        {links}
-                    </ul>
-                </div>
-                <div className="navbar-end">         
-                    <button className='mr-5 btn'><NavLink to="/auth-Login" style={getLinkStyle}>Login</NavLink></button>
-                    <button className='mr-5 btn'><NavLink to="/auth-Register" style={getLinkStyle}>Register</NavLink></button>
-                    <button className='btn'><NavLink to="/auth-LogOut" style={getLinkStyle}>Log Out</NavLink></button>
-                </div>
+      <div>
+        <div className="navbar fixed z-50 bg-transparent max-w-screen-xl mx-auto left-0 right-0">
+          <div className="navbar-start">
+            <div className="dropdown">
+              <ul className="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow">
+                {links}
+              </ul>
             </div>
+            <Link to="/" className="charm-bold text-3xl">
+              The Book Heaven
+            </Link>
+          </div>
+          <div className="navbar-center hidden lg:flex">
+            <ul className="menu menu-horizontal px-1 gap-10">{links}</ul>
+          </div>
+          <div className="navbar-end">
+            <button className="mr-5 btn">
+              <NavLink to="/auth-Login" style={getLinkStyle}>
+                Login
+              </NavLink>
+            </button>
+            <button className="mr-5 btn">
+              <NavLink to="/auth-Register" style={getLinkStyle}>
+                Register
+              </NavLink>
+            </button>
+            <button className="btn">
+              <NavLink to="/auth-LogOut" style={getLinkStyle}>
+                Log Out
+              </NavLink>
+            </button>
+          </div>
         </div>
+      </div>
     );
 };
 

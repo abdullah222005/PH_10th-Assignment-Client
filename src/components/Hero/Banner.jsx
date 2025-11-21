@@ -1,60 +1,72 @@
-// Banner.jsx
-import React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import { Autoplay } from "swiper/modules";
+import slider1 from '../../assets/slider-3.jpg'
+import slider2 from '../../assets/slider-2.jpg'
+import slider3 from '../../assets/slider-1.jpg'
 
-const Banner = ({
-  imageUrl = "https://via.placeholder.com/1200x500",
-  linkUrl = "#",
-  title = "Your Title Here",
-  paragraph = "You can customize this",
-  buttonText = "Explore Now",
-  onButtonClick = null,
-}) => {
+
+const Banner = () => {
   return (
-    <section className="w-full">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="relative rounded-xl overflow-hidden shadow-lg">
-        
-          <a href={linkUrl} target="_blank" rel="noopener noreferrer" className="block">
-            <img
-              src={imageUrl}
-              alt={title}
-              className="w-full h-64 sm:h-80 md:h-96 object-cover transition-transform duration-500 hover:scale-105"
-            />
-          </a>
-
-         
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="bg-black/60 w-full h-full"></div>
-            <div className="absolute px-6 py-8 text-center text-white max-w-2xl">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-3 drop-shadow">
-                {title}
-              </h2>
-              <p className="text-sm sm:text-base md:text-lg opacity-95 mb-6">{paragraph}</p>
-
-              <div className="flex justify-center">
-                {onButtonClick ? (
-                  <button
-                    onClick={onButtonClick}
-                    className="px-6 py-2 rounded-md bg-indigo-600 hover:bg-indigo-700 transition text-white font-medium"
-                  >
-                    {buttonText}
-                  </button>
-                ) : (
-                  <a
-                    href={linkUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-6 py-2 rounded-md bg-indigo-600 hover:bg-indigo-700 transition text-white font-medium"
-                  >
-                    {buttonText}
-                  </a>
-                )}
-              </div>
+    <div className="relative w-full h-[90vh]">
+      <Swiper modules={[Autoplay]} autoplay={{ delay: 3333 }} loop={true}>
+        <SwiperSlide>
+          <div
+            className="w-full h-[90vh] bg-cover bg-center"
+            style={{
+              backgroundImage: `url(${slider1})`,
+            }}
+          >
+            <div className="text-white max-w-10/12 mx-auto pt-55">
+              <h1 className="text-5xl font-bold">
+                The Performing Street art Book
+              </h1>
+              <p className="mt-4">Lorem ipsum dolor sit amet...</p>
+              <button className="btn mt-6 bg-pink-500 text-white">
+                Add to cart
+              </button>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
+        </SwiperSlide>
+
+        <SwiperSlide>
+          <div
+            className="w-full h-[90vh] bg-cover bg-center"
+            style={{
+              backgroundImage: `url(${slider2})`,
+            }}
+          >
+            <div className="text-white max-w-10/12 mx-auto pt-55">
+              <h1 className="text-5xl font-bold">
+                The Performing Street art Book
+              </h1>
+              <p className="mt-4">Lorem ipsum dolor sit amet...</p>
+              <button className="btn mt-6 bg-pink-500 text-white">
+                Add to cart
+              </button>
+            </div>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div
+            className="w-full h-[90vh] bg-cover bg-center"
+            style={{
+              backgroundImage: `url(${slider3})`,
+            }}
+          >
+            <div className="text-white max-w-10/12 mx-auto pt-55">
+              <h1 className="text-5xl font-bold">
+                The Performing Street art Book
+              </h1>
+              <p className="mt-4">Lorem ipsum dolor sit amet...</p>
+              <button className="btn mt-6 bg-pink-500 text-white">
+                Add to cart
+              </button>
+            </div>
+          </div>
+        </SwiperSlide>
+      </Swiper>
+    </div>
   );
 };
 
