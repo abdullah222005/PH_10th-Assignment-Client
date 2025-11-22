@@ -162,7 +162,7 @@ const AddBook = () => {
                 </label>
                 <input
                   type="text"
-                  className="input input-bordered w-full bg-gray-100"
+                  className="input input-bordered w-full bg-gray-100 text-black"
                   value={user?.displayName || "Anonymous"}
                   readOnly
                 />
@@ -173,7 +173,7 @@ const AddBook = () => {
                 </label>
                 <input
                   type="email"
-                  className="input input-bordered w-full bg-gray-100"
+                  className="input input-bordered w-full bg-gray-100 text-black"
                   value={user?.email || "Not logged in"}
                   readOnly
                 />

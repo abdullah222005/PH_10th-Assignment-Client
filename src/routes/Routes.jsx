@@ -9,6 +9,7 @@ import RegisterPage from '../pages/Register Page/RegisterPage.jsx';
 import AddBook from '../pages/Add Book/AddBook.jsx';
 import MyBooks from '../pages/My Books/MyBooks.jsx';
 import BookDetails from '../pages/Book Details/BookDetails.jsx';
+import AboutUs from '../pages/About Us/AboutUs.jsx';
 
 
 
@@ -47,6 +48,10 @@ export const router = createBrowserRouter([
         path: "/book-details/:id",
         Component: BookDetails,
       },
+      {
+        path: '/aboutUs',
+        Component: AboutUs
+      }
     ],
   },
 ]);

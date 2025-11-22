@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import AuthContext from "../../Auth/AuthContext";
 import axios from "axios";
+import SingleMyBook from "../../Single Book/SingleMyBook";
 
 const MyBooks = () => {
   const [myBooks, setMyBooks] = useState([]);
@@ -30,21 +31,27 @@ const MyBooks = () => {
   if (loading) return <div>Loading...</div>;
 
   return (
-    <div>
-      <h2>My Books Collection</h2>
-      {myBooks.length === 0 ? (
-        <p>You haven't added any books yet.</p>
-      ) : (
-        <div className="books-container">
-          {myBooks.map((book) => (
-            <div key={book._id}>
-              <h3>{book.title}</h3>
-              <p>{book.author}</p>
-              {/* Add more book details */}
-            </div>
+    <div className="max-w-10/12 mx-auto mt-10">
+      <h1 className="text-3xl font-semibold text-center mb-6">My Books</h1>
+
+      <table className="w-full text-black rounded-lg shadow border border-separate border-spacing-y-4">
+        <thead className="bg-[#fffabc] border-2 text-xl">
+          <tr>
+            <th className="px-4 py-2">SL</th>
+            <th className="px-4 py-2">Title</th>
+            <th className="px-4 py-2">Author</th>
+            <th className="px-4 py-2">Genre</th>
+            <th className="px-4 py-2">Rating</th>
+            <th className="px-4 py-2">Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {myBooks.map((book, index) => (
+            <SingleMyBook key={book._id} book={book} index={index} />
           ))}
-        </div>
-      )}
+        </tbody>
+      </table>
     </div>
   );
 };
