@@ -1,10 +1,12 @@
 import React, { use } from "react";
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import AuthContext from "../../Auth/AuthContext";
+import { Tooltip } from "react-tooltip";
 
 const Navbar = () => {
-  const { user } = use(AuthContext);
+  const { user, logOut } = use(AuthContext);
   const location = useLocation();
+  const navigate = useNavigate();
 
   const links = (
     <>
@@ -25,9 +27,21 @@ const Navbar = () => {
       </li>
     </>
   );
+  const handleLogOut =()=>{
+    logOut()
+    .then(res => {
+      navigate('/');
+    })
+    .catch(err=> console.log(err)
+    )
+  }
   return (
     <div>
-      <div className={`navbar ${location.pathname==='/' ? 'absolute':'relative'} z-50 bg-transparent max-w-screen-xl mx-auto left-0 right-0`}>
+      <div
+        className={`navbar ${
+          location.pathname === "/" ? "absolute" : "relative"
+        } z-50 bg-transparent max-w-screen-xl mx-auto left-0 right-0`}
+      >
         <div className="navbar-start">
           <div className="dropdown">
             <ul className="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow">
@@ -43,9 +57,20 @@ const Navbar = () => {
         </div>
         <div className="navbar-end">
           {user ? (
-            <button className="btn">
-              <Link to="/auth/LogOut">Log Out</Link>
-            </button>
+            <div className="flex gap-3 justify-center items-center">
+              <div>
+                <img className="w-14"
+                  data-tooltip-id="profile-tooltip"
+                  data-tooltip-content={user.displayName}
+                  src={user.photoURL}
+                  alt=""
+                />
+                <Tooltip id="profile-tooltip" place="bottom" />
+              </div>
+              <button onClick={handleLogOut} className="btn">
+                Log Out
+              </button>
+            </div>
           ) : (
             <div>
               <button className="mr-5 btn">
