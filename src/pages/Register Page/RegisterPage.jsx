@@ -34,6 +34,22 @@ const RegisterPage = () => {
         updateUser({ displayName: name, photoURL: photoUrl })
           .then(() => {
             setUser({ ...user, displayName: name, photoURL: photoUrl });
+            const newUser = {
+              name: rs.user.displayName,
+              email: rs.user.email,
+              image: rs.user.photoURL,
+            };
+            fetch("http://localhost:1111/users", {
+              method: "POST",
+              headers: {
+                "content-type": "application/json",
+              },
+              body: JSON.stringify(newUser),
+            })
+              .then((res) => res.json())
+              .then((data) => {
+                console.log("data after user save", data);
+              });
           })
           .catch((err) => {
             console.log(err);

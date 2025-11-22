@@ -31,6 +31,22 @@ const LoginPage = () => {
       .then((rs) => {
         navigate(`${location.state ? location.state : "/"}`);
         toast.success("Login Successful");
+        const newUser = {
+          name: rs.user.displayName,
+          email: rs.user.email,
+          image: rs.user.photoURL,
+        };
+        fetch("http://localhost:1111/users", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(newUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log("data after user save", data);
+          });
       })
       .catch((err) => {
         console.log(err);
