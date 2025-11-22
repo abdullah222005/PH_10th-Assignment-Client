@@ -12,7 +12,7 @@ const LatestBooks = () => {
     })
 
     return (
-        <div className='my-5 md:my-10 lg:my-15'>
+        <div className='my-5 md:my-10 lg:my-15 max-w-10/12 mx-auto'>
             <h1 className='text-4xl text-center font-semibold mb-10'>Latest Books</h1>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-11/12 mx-auto'>
                 {

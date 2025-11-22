@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import AuthContext from "../../Auth/AuthContext";
+import axios from "axios";
 
 const AddBook = () => {
   const { user } = useContext(AuthContext);
@@ -44,6 +45,12 @@ const AddBook = () => {
 
     // Here you would typically send this data to your backend/database
     console.log("New Book Data:", newBook);
+    axios.post("http://localhost:1111/all-books", newBook)
+    .then(res=>{
+      if(res.data.insertedId){
+        toast.success('Successfully added the book')
+      }
+    })
 
     // For now, just show success message
     toast.success("Book added successfully!");
@@ -55,7 +62,7 @@ const AddBook = () => {
   };
 
   return (
-    <div className="bg-sapphire-night py-11 min-h-screen">
+    <div className="bg-sapphire-night min-h-screen">
       <div className="card bg-base-100 w-full max-w-2xl shrink-0 shadow-2xl mx-auto my-5 md:my-10 lg:my-15">
         <div className="card-body p-11">
           <h1 className="text-3xl text-center pb-5 font-semibold">

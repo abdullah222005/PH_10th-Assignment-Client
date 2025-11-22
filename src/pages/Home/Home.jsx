@@ -4,6 +4,7 @@ import Banner from '../../components/Hero/Banner';
 import AboutUsSection from '../../components/About Us Home/AboutUsSection';
 import Quote from '../../components/Quote/Quote';
 import LatestBooks from '../../components/Latest Books/LatestBooks';
+import BestBook from '../../components/Best Book/BestBook';
 
 const Home = () => {
     return (
@@ -11,6 +12,7 @@ const Home = () => {
             <Banner/>
             <LatestBooks/>
             <Quote/>
+            <BestBook/>
             <AboutUsSection/>
         </div>
     );

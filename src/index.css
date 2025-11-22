@@ -17,3 +17,7 @@ a.active{
     color: aqua;
     border-bottom: 2px solid aqua;
 }
+
+.spinner{
+  rotate: calc(360deg);
+}

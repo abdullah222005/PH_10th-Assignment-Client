@@ -1,18 +1,12 @@
 import { useContext, useEffect, useState } from "react";
 import AuthContext from "../../Auth/AuthContext";
 import axios from "axios";
-import SingleMyBook from "../../Single Book/SingleMyBook";
+import SingleMyBook from '../../Single Book/SingleMyBook'
 
 const MyBooks = () => {
   const [myBooks, setMyBooks] = useState([]);
   const [loading, setLoading] = useState(true);
   const { user } = useContext(AuthContext);
-
-  useEffect(() => {
-    if (user?.email) {
-      fetchMyBooks(user.email);
-    }
-  }, [user]);
 
   const fetchMyBooks = async (email) => {
     try {
@@ -28,30 +22,64 @@ const MyBooks = () => {
     }
   };
 
-  if (loading) return <div>Loading...</div>;
+  useEffect(() => {
+    if (user?.email) {
+      fetchMyBooks(user.email);
+    }
+  }, [user]);
+
+  // Refresh data after update
+  const handleBookUpdated = () => {
+    console.log("Book updated, refreshing list...");
+    if (user?.email) {
+      fetchMyBooks(user.email);
+    }
+  };
+
+  // Remove deleted book from state immediately
+  const handleBookDeleted = (deletedId) => {
+    console.log("Book deleted, removing from UI:", deletedId);
+    setMyBooks((prevBooks) =>
+      prevBooks.filter((book) => book._id !== deletedId)
+    );
+  };
+
+  if (loading) return <div className="text-center py-10">Loading...</div>;
 
   return (
-    <div className="max-w-10/12 mx-auto mt-10">
-      <h1 className="text-3xl font-semibold text-center mb-6">My Books</h1>
-
-      <table className="w-full text-black rounded-lg shadow border border-separate border-spacing-y-4">
-        <thead className="bg-[#fffabc] border-2 text-xl">
-          <tr>
-            <th className="px-4 py-2">SL</th>
-            <th className="px-4 py-2">Title</th>
-            <th className="px-4 py-2">Author</th>
-            <th className="px-4 py-2">Genre</th>
-            <th className="px-4 py-2">Rating</th>
-            <th className="px-4 py-2">Action</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {myBooks.map((book, index) => (
-            <SingleMyBook key={book._id} book={book} index={index} />
-          ))}
-        </tbody>
-      </table>
+    <div className="container mx-auto px-4 py-8">
+      <h2 className="text-3xl font-bold mb-6">My Books Collection</h2>
+      {myBooks.length === 0 ? (
+        <p className="text-center text-gray-600">
+          You haven't added any books yet.
+        </p>
+      ) : (
+        <div className="overflow-x-auto">
+          <table className="table w-full">
+            <thead>
+              <tr className="bg-gray-200">
+                <th className="text-center">#</th>
+                <th className="text-center">Title</th>
+                <th className="text-center">Author</th>
+                <th className="text-center">Genre</th>
+                <th className="text-center">Rating</th>
+                <th className="text-center">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {myBooks.map((book, index) => (
+                <SingleMyBook
+                  key={book._id}
+                  book={book}
+                  index={index}
+                  onBookUpdated={handleBookUpdated}
+                  onBookDeleted={handleBookDeleted}
+                />
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
     </div>
   );
 };

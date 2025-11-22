@@ -10,6 +10,7 @@ import AddBook from '../pages/Add Book/AddBook.jsx';
 import MyBooks from '../pages/My Books/MyBooks.jsx';
 import BookDetails from '../pages/Book Details/BookDetails.jsx';
 import AboutUs from '../pages/About Us/AboutUs.jsx';
+import PrivateRoute from './PrivateRoute.jsx';
 
 
 
@@ -38,15 +39,21 @@ export const router = createBrowserRouter([
       },
       {
         path: "/add-book",
-        Component: AddBook,
+        element: <PrivateRoute>
+          <AddBook></AddBook>
+        </PrivateRoute>,
       },
       {
         path: "/myBooks",
-        Component: MyBooks,
+        element: <PrivateRoute>
+          <MyBooks></MyBooks>
+        </PrivateRoute>,
       },
       {
         path: "/book-details/:id",
-        Component: BookDetails,
+        element: <PrivateRoute>
+          <BookDetails></BookDetails>
+        </PrivateRoute>,
       },
       {
         path: '/aboutUs',
