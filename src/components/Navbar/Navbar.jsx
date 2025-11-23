@@ -62,7 +62,7 @@ const Navbar = () => {
           {user ? (
             <div className="flex gap-3 justify-center items-center">
               <div>
-                <img className="w-14"
+                <img className="w-14 rounded-full"
                   data-tooltip-id="profile-tooltip"
                   data-tooltip-content={user.displayName}
                   src={user.photoURL}
