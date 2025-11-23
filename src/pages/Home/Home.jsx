@@ -5,6 +5,8 @@ import AboutUsSection from '../../components/About Us Home/AboutUsSection';
 import Quote from '../../components/Quote/Quote';
 import LatestBooks from '../../components/Latest Books/LatestBooks';
 import BestBook from '../../components/Best Book/BestBook';
+import ResponsiveShowcase from '../../components/Responsiveness/ResponsiveShowcase';
+import TopThree from '../../components/Top Three/TopThree';
 
 const Home = () => {
     return (
@@ -13,6 +15,8 @@ const Home = () => {
             <LatestBooks/>
             <Quote/>
             <BestBook/>
+            <ResponsiveShowcase/>
+            <TopThree/>
             <AboutUsSection/>
         </div>
     );
