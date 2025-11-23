@@ -2,6 +2,7 @@ import React, { use } from "react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import AuthContext from "../../Auth/AuthContext";
 import { Tooltip } from "react-tooltip";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
   const { user, logOut } = use(AuthContext);
@@ -34,6 +35,7 @@ const Navbar = () => {
     logOut()
     .then(res => {
       navigate('/');
+      toast.success('Logout Successful..!!');
     })
     .catch(err=> console.log(err)
     )
@@ -47,14 +49,36 @@ const Navbar = () => {
       >
         <div className="navbar-start">
           <div className="dropdown">
-            <ul className="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow">
+            <label tabIndex={0} className="btn btn-ghost lg:hidden">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            </label>
+
+            <ul
+              tabIndex={0}
+              className="menu menu-sm dropdown-content mt-3 z-[50] p-2 shadow bg-base-100 rounded-box w-52"
+            >
               {links}
             </ul>
           </div>
+
           <Link to="/" className="charm-bold text-3xl">
             The Book Heaven
           </Link>
         </div>
+
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 gap-10">{links}</ul>
         </div>
@@ -62,7 +86,8 @@ const Navbar = () => {
           {user ? (
             <div className="flex gap-3 justify-center items-center">
               <div>
-                <img className="w-14 rounded-full"
+                <img
+                  className="w-14 rounded-full"
                   data-tooltip-id="profile-tooltip"
                   data-tooltip-content={user.displayName}
                   src={user.photoURL}

@@ -2,6 +2,7 @@ import React, { use, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import AuthContext from "../../Auth/AuthContext";
+import axios from "axios";
 
 const LoginPage = () => {
   const { loginWithGoogle, loginWithEP } = use(AuthContext);
@@ -36,17 +37,11 @@ const LoginPage = () => {
           email: rs.user.email,
           image: rs.user.photoURL,
         };
-        fetch("http://localhost:1111/users", {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(newUser),
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            console.log("data after user save", data);
-          });
+       axios.post("http://localhost:1111/users", newUser)
+       .then((data) => {
+         console.log("data after user save", data);
+         navigate(`${location.state ? location.state : "/"}`);
+       });
       })
       .catch((err) => {
         console.log(err);
@@ -56,7 +51,7 @@ const LoginPage = () => {
   return (
     <div className="bg-sapphire-night py-11">
       <div className="card bg-base-100 w-full max-w-lg shrink-0 shadow-2xl mx-auto my-5 md:my-10 lg:my-15">
-        <title>Login - Gamehub</title>
+        <title>Login - The Book Heaven</title>
         <div className="card-body p-11">
           <h1 className="text-3xl text-center pb-5 font-semibold">
             Login your account

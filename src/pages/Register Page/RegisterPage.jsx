@@ -1,6 +1,7 @@
 import React, { use, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import AuthContext from "../../Auth/AuthContext";
+import axios from "axios";
 
 const RegisterPage = () => {
   const { createUserWithEP, setUser, user, updateUser } = use(AuthContext);
@@ -39,17 +40,10 @@ const RegisterPage = () => {
               email: rs.user.email,
               image: rs.user.photoURL,
             };
-            fetch("http://localhost:1111/users", {
-              method: "POST",
-              headers: {
-                "content-type": "application/json",
-              },
-              body: JSON.stringify(newUser),
-            })
-              .then((res) => res.json())
-              .then((data) => {
-                console.log("data after user save", data);
-              });
+            axios.post("http://localhost:1111/users", newUser)
+            .then((data) => {
+              console.log("data after user save", data);
+            });
           })
           .catch((err) => {
             console.log(err);
