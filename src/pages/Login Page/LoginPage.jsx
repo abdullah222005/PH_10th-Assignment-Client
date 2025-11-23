@@ -37,11 +37,15 @@ const LoginPage = () => {
           email: rs.user.email,
           image: rs.user.photoURL,
         };
-       axios.post("http://localhost:1111/users", newUser)
-       .then((data) => {
-         console.log("data after user save", data);
-         navigate(`${location.state ? location.state : "/"}`);
-       });
+        axios
+          .post(
+            "https://the-book-heaven-server-omega.vercel.app/users",
+            newUser
+          )
+          .then((data) => {
+            console.log("data after user save", data);
+            navigate(`${location.state ? location.state : "/"}`);
+          });
       })
       .catch((err) => {
         console.log(err);

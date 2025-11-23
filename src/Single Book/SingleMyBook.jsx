@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 
 const SingleMyBook = ({ book, index, onBookUpdated, onBookDeleted }) => {
   const modalRef = useRef();
@@ -69,7 +70,7 @@ const SingleMyBook = ({ book, index, onBookUpdated, onBookDeleted }) => {
       console.log("Update data:", updateData);
 
       const res = await axios.patch(
-        `http://localhost:1111/update-book/${book._id}`,
+        `https://the-book-heaven-server-omega.vercel.app/update-book/${book._id}`,
         updateData
       );
 
@@ -100,27 +101,52 @@ const SingleMyBook = ({ book, index, onBookUpdated, onBookDeleted }) => {
   };
 
   const handleDelete = async (id) => {
-    if (!window.confirm("Are you sure you want to delete this book?")) {
+    const result = await Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    });
+
+    if (!result.isConfirmed) {
       return;
     }
 
     try {
       console.log("Deleting book ID:", id);
-      const res = await axios.delete(`http://localhost:1111/myBooks/${id}`);
+      const res = await axios.delete(
+        `https://the-book-heaven-server-omega.vercel.app/myBooks/${id}`
+      );
       console.log("Delete response:", res.data);
 
       if (res.data.deletedCount > 0) {
-        toast.success("Book deleted successfully");
         // Call parent callback immediately
         if (onBookDeleted) {
           onBookDeleted(id);
         }
+
+        Swal.fire({
+          title: "Deleted!",
+          text: "Your book has been deleted.",
+          icon: "success",
+        });
       } else {
-        toast.error("Book not found");
+        Swal.fire({
+          title: "Error!",
+          text: "Book not found",
+          icon: "error",
+        });
       }
     } catch (error) {
       console.error("Delete error:", error);
-      toast.error(error.response?.data?.error || "Error deleting book");
+      Swal.fire({
+        title: "Error!",
+        text: error.response?.data?.error || "Error deleting book",
+        icon: "error",
+      });
     }
   };
 

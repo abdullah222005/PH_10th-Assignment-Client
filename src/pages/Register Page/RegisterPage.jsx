@@ -16,18 +16,18 @@ const RegisterPage = () => {
     const email = e.target.email.value;
     const password = e.target.password.value;
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
-  
+
     if (name.length < 4) {
       setError("Name can't be less than 4 alphabet.");
       return;
     } else {
       setError("");
     }
-    if(!passwordRegex.test(password)){
-      setError("Must need a uppercarse, a lowercase & minimum 6 characters.")
+    if (!passwordRegex.test(password)) {
+      setError("Must need a uppercarse, a lowercase & minimum 6 characters.");
       return;
-    }else{
-      setError("")
+    } else {
+      setError("");
     }
 
     createUserWithEP(email, password)
@@ -40,10 +40,14 @@ const RegisterPage = () => {
               email: rs.user.email,
               image: rs.user.photoURL,
             };
-            axios.post("http://localhost:1111/users", newUser)
-            .then((data) => {
-              console.log("data after user save", data);
-            });
+            axios
+              .post(
+                "https://the-book-heaven-server-omega.vercel.app/users",
+                newUser
+              )
+              .then((data) => {
+                console.log("data after user save", data);
+              });
           })
           .catch((err) => {
             console.log(err);
@@ -118,7 +122,9 @@ const RegisterPage = () => {
                 </Link>
               </label>
             </div>
-            {error && <p className="text-red-500 font-semibold mt-2">{error}</p>}
+            {error && (
+              <p className="text-red-500 font-semibold mt-2">{error}</p>
+            )}
             <button type="submit" className="btn btn-primary mt-4">
               Register
             </button>

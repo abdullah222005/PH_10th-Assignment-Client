@@ -7,7 +7,7 @@ const AllBooks = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:1111/all-books")
+      .get("https://the-book-heaven-server-omega.vercel.app/all-books")
       .then((res) => setBooks(res.data))
       .catch((err) => console.log(err));
   }, []);

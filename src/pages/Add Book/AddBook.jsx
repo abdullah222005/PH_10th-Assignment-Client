@@ -45,11 +45,16 @@ const AddBook = () => {
 
     // Here you would typically send this data to your backend/database
     console.log("New Book Data:", newBook);
-    axios.post("http://localhost:1111/all-books", newBook).then((res) => {
-      if (res.data.insertedId) {
-        toast.success("Successfully added the book");
-      }
-    });
+    axios
+      .post(
+        "https://the-book-heaven-server-omega.vercel.app/all-books",
+        newBook
+      )
+      .then((res) => {
+        if (res.data.insertedId) {
+          toast.success("Successfully added the book");
+        }
+      });
 
     // For now, just show success message
     toast.success("Book added successfully!");

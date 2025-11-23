@@ -12,7 +12,7 @@ const MyBooks = () => {
     try {
       setLoading(true);
       const response = await axios.get(
-        `http://localhost:1111/myBooks?email=${email}`
+        `https://the-book-heaven-server-omega.vercel.app/myBooks?email=${email}`
       );
       setMyBooks(response.data);
     } catch (error) {
@@ -44,19 +44,12 @@ const MyBooks = () => {
     );
   };
 
-  // Themed Loading State
-  if (loading)
-    return (
-      <div className="text-center py-10 text-neutral dark:text-secondary">
-        <span className="loading loading-spinner loading-lg text-primary"></span>
-        <p>Loading your books...</p>
-      </div>
-    );
-
   return (
     // Themed container for background and text color
     <div className="max-w-10/12 mx-auto px-4 rounded-2xl my-5 md:my-10 lg:my-15 py-8 bg-base-100 text-neutral dark:bg-base-300 dark:text-secondary min-h-screen">
-      <h2 className="text-3xl text-center font-bold mb-6">My Books Collection</h2>
+      <h2 className="text-3xl text-center font-bold mb-6">
+        My Books Collection
+      </h2>
       {myBooks.length === 0 ? (
         // Themed Empty State Message
         <p className="text-center text-neutral/80 dark:text-secondary/80">

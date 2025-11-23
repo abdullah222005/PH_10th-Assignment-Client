@@ -8,7 +8,7 @@ const PrivateRoute = ({ children }) => {
 
   if (loading) {
     return (
-      <div className="text-2xl text-center flex gap-3 wholeSpinner">
+      <div className="text-2xl text-center flex justify-center gap-3 wholeSpinner">
         <span className="spinner">🌀</span>
         <span className="spinner">🌀</span>
         <span className="spinner">🌀</span>

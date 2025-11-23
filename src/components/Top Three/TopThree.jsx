@@ -15,7 +15,9 @@ const TopThree = () => {
 
   const fetchTopBooks = async () => {
     try {
-      const response = await axios.get("http://localhost:1111/all-books");
+      const response = await axios.get(
+        "https://the-book-heaven-server-omega.vercel.app/all-books"
+      );
       const top3 = response.data
         .sort((a, b) => b.rating - a.rating)
         .slice(0, 3);
@@ -26,14 +28,6 @@ const TopThree = () => {
       setLoading(false);
     }
   };
-
-  if (loading) {
-    return (
-      <div className="py-20 text-center">
-        <p className="text-xl text-secondary">Loading top books...</p>
-      </div>
-    );
-  }
 
   const getMedalColor = (index) => {
     switch (index) {

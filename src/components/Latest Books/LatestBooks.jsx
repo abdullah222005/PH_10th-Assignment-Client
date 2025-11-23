@@ -8,7 +8,7 @@ const LatestBooks = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:1111/latest-books")
+      .get("https://the-book-heaven-server-omega.vercel.app/latest-books")
       .then((res) => setLatestBooks(res.data))
       .catch((err) => console.log(err));
   }, []);

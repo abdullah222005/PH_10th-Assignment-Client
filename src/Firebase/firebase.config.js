@@ -1,13 +1,12 @@
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBcXzblXCBD6NcZeU4YK_0lIch6HIYNNeo",
-  authDomain: "the-book-heaven-8aa6c.firebaseapp.com",
-  projectId: "the-book-heaven-8aa6c",
-  storageBucket: "the-book-heaven-8aa6c.firebasestorage.app",
-  messagingSenderId: "694966237706",
-  appId: "1:694966237706:web:3933665d2780962beafdf3",
+  apiKey: import.meta.env.VITE_apiKey,
+  authDomain: import.meta.env.VITE_authDomain,
+  projectId: import.meta.env.VITE_projectId,
+  storageBucket: import.meta.env.VITE_storageBucket,
+  messagingSenderId: import.meta.env.VITE_messagingSenderId,
+  appId: import.meta.env.VITE_appId,
 };
 
 const app = initializeApp(firebaseConfig);

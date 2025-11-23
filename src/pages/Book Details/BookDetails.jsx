@@ -4,6 +4,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import AuthContext from "../../Auth/AuthContext";
+import Swal from "sweetalert2";
 
 const BookDetails = () => {
   const { id } = useParams();
@@ -16,7 +17,7 @@ const BookDetails = () => {
   // Fetch book details
   useEffect(() => {
     axios
-      .get(`http://localhost:1111/book-details/${id}`)
+      .get(`https://the-book-heaven-server-omega.vercel.app/book-details/${id}`)
       .then((res) => setBook(res.data))
       .catch((err) => console.log(err));
   }, [id]);
@@ -28,7 +29,9 @@ const BookDetails = () => {
 
   const fetchComments = () => {
     axios
-      .get(`http://localhost:1111/book-details/${id}/comments`)
+      .get(
+        `https://the-book-heaven-server-omega.vercel.app/book-details/${id}/comments`
+      )
       .then((res) => setComments(res.data))
       .catch((err) => console.log(err));
   };
@@ -58,7 +61,7 @@ const BookDetails = () => {
       };
 
       const res = await axios.post(
-        `http://localhost:1111/book-details/${id}/comments`,
+        `https://the-book-heaven-server-omega.vercel.app/book-details/${id}/comments`,
         commentData
       );
 
@@ -77,46 +80,50 @@ const BookDetails = () => {
 
   // Handle delete comment
   const handleDeleteComment = async (commentId) => {
-    if (!window.confirm("Are you sure you want to delete this comment?")) {
+    const result = await Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    });
+
+    if (!result.isConfirmed) {
       return;
     }
 
     try {
       const res = await axios.delete(
-        `http://localhost:1111/comments/${commentId}`
+        `https://the-book-heaven-server-omega.vercel.app/comments/${commentId}`
       );
 
       if (res.data.deletedCount > 0) {
-        toast.success("Comment deleted successfully");
         setComments(comments.filter((c) => c._id !== commentId));
+
+        Swal.fire({
+          title: "Deleted!",
+          text: "Your comment has been deleted.",
+          icon: "success",
+        });
       }
     } catch (error) {
       console.error(error);
-      toast.error("Failed to delete comment");
+      Swal.fire({
+        title: "Error!",
+        text: "Failed to delete comment",
+        icon: "error",
+      });
     }
   };
 
-  // Format date
-  const formatDate = (dateString) => {
-    const date = new Date(dateString);
-    const now = new Date();
-    const diffInMs = now - date;
-    const diffInMins = Math.floor(diffInMs / 60000);
-    const diffInHours = Math.floor(diffInMs / 3600000);
-    const diffInDays = Math.floor(diffInMs / 86400000);
-
-    if (diffInMins < 1) return "Just now";
-    if (diffInMins < 60)
-      return `${diffInMins} minute${diffInMins > 1 ? "s" : ""} ago`;
-    if (diffInHours < 24)
-      return `${diffInHours} hour${diffInHours > 1 ? "s" : ""} ago`;
-    if (diffInDays < 7)
-      return `${diffInDays} day${diffInDays > 1 ? "s" : ""} ago`;
-    return date.toLocaleDateString();
-  };
-
   if (!book) {
-    return <p className="text-center mt-20">Loading...</p>;
+    return (
+      <div className="flex justify-center items-center py-20">
+        {<p className="text-lg font-semibold">Loading book details...</p>}
+      </div>
+    );
   }
 
   const { title, author, genre, rating, summary, coverImage, userEmail } = book;
