@@ -125,7 +125,7 @@ const SingleMyBook = ({ book, index, onBookUpdated, onBookDeleted }) => {
   };
 
   return (
-    <tr className="border-2 bg-[#FCFAE0] text-lg">
+    <tr className="border-2 bg-base-100 dark:bg-base-200 text-neutral dark:text-secondary text-lg shadow-md hover:shadow-lg transition-shadow duration-200">
       <td className="px-4 py-5 text-center">{index + 1}</td>
       <td className="px-4 py-5 text-center">{book.title}</td>
       <td className="px-4 py-5 text-center">{book.author}</td>

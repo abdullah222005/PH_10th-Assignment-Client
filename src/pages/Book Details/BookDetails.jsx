@@ -211,7 +211,7 @@ const BookDetails = () => {
                     value={newComment}
                     onChange={(e) => setNewComment(e.target.value)}
                     placeholder="Write your comment here..."
-                    className="textarea textarea-bordered w-full h-24 bg-white resize-none"
+                    className="textarea textarea-bordered w-full h-24 bg-white text-black resize-none"
                     disabled={loading}
                   />
                   <div className="flex justify-end mt-3">
@@ -265,7 +265,7 @@ const BookDetails = () => {
                   <div className="flex-1">
                     <div className="flex items-center justify-between mb-2">
                       <div>
-                        <h4 className="font-semibold text-lg">
+                        <h4 className="font-semibold text-lg text-black">
                           {comment.userName}
                         </h4>
                         <p className="text-sm text-gray-500">

@@ -10,29 +10,47 @@ import {
 
 const AboutUs = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-amber-50 to-white">
-      {}
-      <div className="bg-gradient-to-r from-amber-600 to-orange-500 text-white py-20 px-6">
+    // Main Container: Base background color changes with the theme
+    <div className="min-h-screen bg-base-100 dark:bg-base-300 text-neutral dark:text-secondary transition-colors duration-300">
+      {/* Hero Section: Re-fixed color logic to ensure gradient is overridden in dark mode */}
+      <div
+        className="
+        // Light Mode (Default): Amber/Orange Gradient
+        text-white 
+        
+        // Dark Mode Override: Dark Gradient (forces background-image property to change)
+        dark:bg-gradient-to-r dark:from-neutral dark:to-base-300 
+        dark:text-secondary 
+        
+        py-20 px-6 transition-colors duration-300
+      "
+      >
         <div className="max-w-6xl mx-auto text-center">
-          <BookOpen className="w-16 h-16 mx-auto mb-6" />
+          {/* Icon color now inherits the parent text color, with a slight adjustment for dark mode primary brand color */}
+          <BookOpen className="w-16 h-16 mx-auto mb-6 dark:text-primary" />
+
+          {/* Title inherits the parent text color (white in light, secondary in dark) */}
           <h1 className="text-5xl font-bold mb-4">About The Book Heaven</h1>
-          <p className="text-xl text-amber-100 max-w-3xl mx-auto">
+
+          {/* Subtitle inherits the parent text color */}
+          <p className="text-xl max-w-3xl mx-auto">
             Your Ultimate Digital Sanctuary for Book Lovers
           </p>
         </div>
       </div>
 
-      {}
+      {/* Main Content */}
       <div className="max-w-6xl mx-auto px-6 py-16">
-        <div className="prose prose-lg max-w-none">
-          <div className="bg-white rounded-2xl shadow-lg p-8 mb-12">
-            <h2 className="text-3xl font-bold text-gray-800 mb-6 flex items-center gap-3">
-              <Sparkles className="w-8 h-8 text-amber-500" />
+        <div className="max-w-none">
+          {/* Our Story Section - Elevated background */}
+          <div className="bg-base-100 dark:bg-base-200 rounded-2xl shadow-xl dark:shadow-none p-8 mb-12">
+            <h2 className="text-3xl font-bold text-neutral dark:text-secondary mb-6 flex items-center gap-3">
+              <Sparkles className="w-8 h-8 text-primary" />
               Our Story
             </h2>
-            <p className="text-gray-700 leading-relaxed mb-4">
+            <p className="text-neutral/80 dark:text-secondary/90 leading-relaxed mb-4">
               Welcome to{" "}
-              <span className="font-semibold text-amber-600">
+              <span className="font-semibold text-primary">
                 The Book Heaven
               </span>
               , where literary dreams come to life. Born from a passion for
@@ -40,7 +58,7 @@ const AboutUs = () => {
               everyone, we've created more than just a digital library – we've
               built a paradise for readers.
             </p>
-            <p className="text-gray-700 leading-relaxed">
+            <p className="text-neutral/80 dark:text-secondary/90 leading-relaxed">
               In a world where books open doors to infinite possibilities, we
               believe every reader deserves a sanctuary where they can explore,
               discover, and celebrate the written word. The Book Heaven brings
@@ -49,14 +67,15 @@ const AboutUs = () => {
             </p>
           </div>
 
-          {}
+          {/* Feature Cards Grid */}
           <div className="grid md:grid-cols-2 gap-8 mb-12">
-            <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 shadow-md">
-              <Library className="w-12 h-12 text-blue-600 mb-4" />
-              <h3 className="text-2xl font-bold text-gray-800 mb-4">
+            {/* Card 1 */}
+            <div className="bg-base-100 dark:bg-base-200 rounded-2xl p-8 shadow-md dark:shadow-none">
+              <Library className="w-12 h-12 text-primary mb-4" />
+              <h3 className="text-2xl font-bold text-neutral dark:text-secondary mb-4">
                 Vast Digital Library
               </h3>
-              <p className="text-gray-700">
+              <p className="text-neutral/80 dark:text-secondary/90">
                 Explore thousands of carefully curated books across fiction,
                 non-fiction, romance, science fiction, mystery, thriller,
                 self-help, biography, academic resources, and more. From
@@ -65,12 +84,13 @@ const AboutUs = () => {
               </p>
             </div>
 
-            <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-8 shadow-md">
-              <Heart className="w-12 h-12 text-purple-600 mb-4" />
-              <h3 className="text-2xl font-bold text-gray-800 mb-4">
+            {/* Card 2 */}
+            <div className="bg-base-100 dark:bg-base-200 rounded-2xl p-8 shadow-md dark:shadow-none">
+              <Heart className="w-12 h-12 text-primary mb-4" />
+              <h3 className="text-2xl font-bold text-neutral dark:text-secondary mb-4">
                 Personal Collections
               </h3>
-              <p className="text-gray-700">
+              <p className="text-neutral/80 dark:text-secondary/90">
                 Create and organize your own personalized book collection, track
                 your reading journey, and build your dream digital bookshelf.
                 Your literary world, curated by you, accessible anywhere,
@@ -78,12 +98,13 @@ const AboutUs = () => {
               </p>
             </div>
 
-            <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-8 shadow-md">
-              <Users className="w-12 h-12 text-green-600 mb-4" />
-              <h3 className="text-2xl font-bold text-gray-800 mb-4">
+            {/* Card 3 */}
+            <div className="bg-base-100 dark:bg-base-200 rounded-2xl p-8 shadow-md dark:shadow-none">
+              <Users className="w-12 h-12 text-primary mb-4" />
+              <h3 className="text-2xl font-bold text-neutral dark:text-secondary mb-4">
                 For Every Reader
               </h3>
-              <p className="text-gray-700">
+              <p className="text-neutral/80 dark:text-secondary/90">
                 Whether you're a casual reader seeking entertainment, an avid
                 bibliophile hunting for hidden gems, or a student in search of
                 academic resources, The Book Heaven caters to all reading
@@ -91,12 +112,13 @@ const AboutUs = () => {
               </p>
             </div>
 
-            <div className="bg-gradient-to-br from-orange-50 to-amber-50 rounded-2xl p-8 shadow-md">
-              <Target className="w-12 h-12 text-orange-600 mb-4" />
-              <h3 className="text-2xl font-bold text-gray-800 mb-4">
+            {/* Card 4 */}
+            <div className="bg-base-100 dark:bg-base-200 rounded-2xl p-8 shadow-md dark:shadow-none">
+              <Target className="w-12 h-12 text-primary mb-4" />
+              <h3 className="text-2xl font-bold text-neutral dark:text-secondary mb-4">
                 User-Friendly Experience
               </h3>
-              <p className="text-gray-700">
+              <p className="text-neutral/80 dark:text-secondary/90">
                 Navigate through our intuitive interface designed for seamless
                 browsing, searching, and discovering. Access comprehensive book
                 details, author information, summaries, and reviews to make
@@ -105,10 +127,10 @@ const AboutUs = () => {
             </div>
           </div>
 
-          {}
-          <div className="bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-2xl p-10 shadow-xl">
+          {/* Our Mission Section - Primary Brand Color background */}
+          <div className="bg-gradient-to-r from-primary/90 to-amber-500 dark:bg-primary text-white rounded-2xl p-10 shadow-xl dark:shadow-none">
             <h2 className="text-3xl font-bold mb-6 text-center">Our Mission</h2>
-            <p className="text-lg text-center leading-relaxed max-w-4xl mx-auto">
+            <p className="text-lg text-center leading-relaxed max-w-4xl mx-auto dark:text-base-100">
               To make quality literature accessible to everyone, fostering a
               love for reading and creating a vibrant community where book
               enthusiasts can explore, collect, and celebrate the written word.
@@ -117,38 +139,38 @@ const AboutUs = () => {
             </p>
           </div>
 
-          {}
+          {/* Why Choose Us? (Stats) */}
           <div className="mt-16 text-center">
-            <h2 className="text-3xl font-bold text-gray-800 mb-8">
+            <h2 className="text-3xl font-bold text-neutral dark:text-secondary mb-8">
               Why Choose The Book Heaven?
             </h2>
             <div className="grid md:grid-cols-3 gap-6">
               <div className="p-6">
-                <div className="text-4xl font-bold text-amber-600 mb-2">
+                <div className="text-4xl font-bold text-primary mb-2">
                   1000+
                 </div>
-                <p className="text-gray-700 font-semibold">Books Available</p>
+                <p className="text-neutral/80 dark:text-secondary/90 font-semibold">
+                  Books Available
+                </p>
               </div>
               <div className="p-6">
-                <div className="text-4xl font-bold text-amber-600 mb-2">
-                  24/7
-                </div>
-                <p className="text-gray-700 font-semibold">Access Anytime</p>
+                <div className="text-4xl font-bold text-primary mb-2">24/7</div>
+                <p className="text-neutral/80 dark:text-secondary/90 font-semibold">
+                  Access Anytime
+                </p>
               </div>
               <div className="p-6">
-                <div className="text-4xl font-bold text-amber-600 mb-2">
-                  100%
-                </div>
-                <p className="text-gray-700 font-semibold">
+                <div className="text-4xl font-bold text-primary mb-2">100%</div>
+                <p className="text-neutral/80 dark:text-secondary/90 font-semibold">
                   Reader Satisfaction
                 </p>
               </div>
             </div>
           </div>
 
-          {}
-          <div className="mt-16 text-center bg-gray-50 rounded-2xl p-10">
-            <p className="text-xl text-gray-800 italic max-w-3xl mx-auto">
+          {/* Quote Section - Secondary background color */}
+          <div className="mt-16 text-center bg-base-200 dark:bg-base-300 rounded-2xl p-10">
+            <p className="text-xl text-neutral dark:text-secondary italic max-w-3xl mx-auto">
               "Every visit to The Book Heaven opens the door to new worlds of
               imagination and knowledge. Join us in this literary journey, and
               discover why readers call us their paradise."

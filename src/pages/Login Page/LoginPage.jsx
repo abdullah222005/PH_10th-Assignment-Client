@@ -84,7 +84,7 @@ const LoginPage = () => {
             {error && (
               <p className="text-red-500 font-semibold mt-1">{error}</p>
             )}
-            <button type="submit" className="btn bg-[#0A192F] mt-4">
+            <button type="submit" className="btn btn-primary mt-4">
               Login
             </button>
           </form>

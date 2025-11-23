@@ -1,7 +1,7 @@
-import { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import AuthContext from "../../Auth/AuthContext";
 import axios from "axios";
-import SingleMyBook from '../../Single Book/SingleMyBook'
+import SingleMyBook from "../../Single Book/SingleMyBook";
 
 const MyBooks = () => {
   const [myBooks, setMyBooks] = useState([]);
@@ -44,26 +44,36 @@ const MyBooks = () => {
     );
   };
 
-  if (loading) return <div className="text-center py-10">Loading...</div>;
+  // Themed Loading State
+  if (loading)
+    return (
+      <div className="text-center py-10 text-neutral dark:text-secondary">
+        <span className="loading loading-spinner loading-lg text-primary"></span>
+        <p>Loading your books...</p>
+      </div>
+    );
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h2 className="text-3xl font-bold mb-6">My Books Collection</h2>
+    // Themed container for background and text color
+    <div className="max-w-10/12 mx-auto px-4 rounded-2xl my-5 md:my-10 lg:my-15 py-8 bg-base-100 text-neutral dark:bg-base-300 dark:text-secondary min-h-screen">
+      <h2 className="text-3xl text-center font-bold mb-6">My Books Collection</h2>
       {myBooks.length === 0 ? (
-        <p className="text-center text-gray-600">
+        // Themed Empty State Message
+        <p className="text-center text-neutral/80 dark:text-secondary/80">
           You haven't added any books yet.
         </p>
       ) : (
-        <div className="overflow-x-auto">
-          <table className="table w-full">
-            <thead>
-              <tr className="bg-gray-200">
-                <th className="text-center">#</th>
-                <th className="text-center">Title</th>
-                <th className="text-center">Author</th>
-                <th className="text-center">Genre</th>
-                <th className="text-center">Rating</th>
-                <th className="text-center">Actions</th>
+        <div className="overflow-x-auto rounded-xl shadow-lg dark:shadow-2xl">
+          <table className="table w-full border-separate border-spacing-y-2">
+            <thead className="text-lg bg-base-200 dark:bg-base-300 text-neutral dark:text-secondary border-2">
+              {/* Themed Table Header Row */}
+              <tr className="bg-base-200 dark:bg-base-200/50 text-neutral dark:text-secondary rounded-lg">
+                <th className="text-center p-4 rounded-tl-xl">#</th>
+                <th className="text-center p-4">Title</th>
+                <th className="text-center p-4">Author</th>
+                <th className="text-center p-4">Genre</th>
+                <th className="text-center p-4">Rating</th>
+                <th className="text-center p-4 rounded-tr-xl">Actions</th>
               </tr>
             </thead>
             <tbody>

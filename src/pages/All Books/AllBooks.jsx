@@ -13,11 +13,14 @@ const AllBooks = () => {
   }, []);
 
   return (
-    <div className="max-w-10/12 mx-auto mt-10">
-      <h1 className="text-3xl font-semibold text-center mb-6">All Books</h1>
+    <div className="max-w-10/12 mx-auto my-5 md:my-10 lg:my-15 text-neutral dark:text-secondary">
+      <h1 className="text-3xl font-semibold text-center mb-6 text-neutral dark:text-secondary">
+        All Books
+      </h1>
 
-      <table className="w-full text-black rounded-lg shadow border border-separate border-spacing-y-4">
-        <thead className="bg-[#fffabc] border-2 text-xl">
+      <table className="w-full rounded-lg shadow border border-separate border-spacing-y-4">
+        {/* Themed Table Header */}
+        <thead className="bg-base-200 dark:bg-base-300 text-neutral dark:text-secondary border-2 text-xl">
           <tr>
             <th className="px-4 py-2">SL</th>
             <th className="px-4 py-2">Title</th>
@@ -29,13 +32,27 @@ const AllBooks = () => {
         </thead>
 
         <tbody>
-          {books.map((book, index) => (
-            <SingleBook key={book._id} book={book} index={index} />
-          ))}
+          {/* Mapping over dummy data if running standalone, otherwise use fetched 'books' */}
+          {books.length > 0 ? (
+            books.map((book, index) => (
+              <SingleBook key={book._id} book={book} index={index} />
+            ))
+          ) : (
+            // Fallback for demonstration/loading state
+            <tr>
+              <td
+                colSpan="6"
+                className="text-center py-8 text-lg text-neutral dark:text-secondary/70"
+              >
+                {books.length === 0
+                  ? "Loading books or no data available..."
+                  : "No books found."}
+              </td>
+            </tr>
+          )}
         </tbody>
       </table>
     </div>
   );
 };
-
 export default AllBooks;

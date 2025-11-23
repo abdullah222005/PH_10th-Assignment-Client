@@ -119,7 +119,7 @@ const RegisterPage = () => {
               </label>
             </div>
             {error && <p className="text-red-500 font-semibold mt-2">{error}</p>}
-            <button type="submit" className="btn bg-[#0A192F] mt-4">
+            <button type="submit" className="btn btn-primary mt-4">
               Register
             </button>
           </form>
