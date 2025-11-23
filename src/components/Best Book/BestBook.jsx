@@ -5,7 +5,7 @@ import React from "react";
 const BestBook = () => {
   return (
     <div className="max-w-10/12 mx-auto my-16 bg-base-100 rounded-3xl shadow-lg p-6 md:p-10">
-      <p className="uppercase text-center tracking-wide text-primary font-semibold text-xl md:text-xl mb-6">
+      <p className="uppercase text-center tracking-wide text-primary font-semibold text-xl md:text-2xl lg:text-4xl mb-8">
         Best Book of the Week
       </p>
 

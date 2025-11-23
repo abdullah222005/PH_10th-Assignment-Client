@@ -14,28 +14,53 @@ const Navbar = () => {
   const links = (
     <>
       <li>
-        <NavLink to="/" className={`${location.pathname == '/' ? 'text-white' : 'text-black'}`}>
+        <NavLink
+          to="/"
+          className={`${
+            location.pathname == "/" ? "lg:text-white" : "text-[#5B58F2]"
+          } `}
+        >
           Home
         </NavLink>
       </li>
       <li>
-        <NavLink to="/aboutUs" className={`${location.pathname == '/' ? 'text-white' : 'text-black'}`}>
+        <NavLink
+          to="/aboutUs"
+          className={`${
+            location.pathname == "/" ? "lg:text-white" : "text-[#5B58F2]"
+          } `}
+        >
           About Us
         </NavLink>
       </li>
       <li>
-        <NavLink to="/all-books" className={`${location.pathname == '/' ? 'text-white' : 'text-black'}`}>
+        <NavLink
+          to="/all-books"
+          className={`${
+            location.pathname == "/" ? "lg:text-white" : "text-[#5B58F2]"
+          } `}
+        >
           All Books
         </NavLink>
       </li>
       <li>
-        <NavLink to="/add-book" className={`${location.pathname == '/' ? 'text-white' : 'text-black'}`}>
+        <NavLink
+          to="/add-book"
+          className={`${
+            location.pathname == "/" ? "lg:text-white" : "text-[#5B58F2]"
+          } `}
+        >
           Add Book
         </NavLink>
       </li>
       {user && (
         <li>
-          <NavLink to="/myBooks" className={`${location.pathname == '/' ? 'text-white' : 'text-black'}`}>
+          <NavLink
+            to="/myBooks"
+            className={`${
+              location.pathname == "/" ? "lg:text-white" : "text-[#5B58F2]"
+            } `}
+          >
             My Books
           </NavLink>
         </li>
@@ -62,7 +87,10 @@ const Navbar = () => {
         <div className="navbar-start">
           {/* mobile dropdown */}
           <div className="dropdown">
-            <label tabIndex={0} className="btn btn-ghost lg:hidden text-white">
+            <label
+              tabIndex={0}
+              className="btn btn-ghost lg:hidden text-pink-500"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -86,7 +114,12 @@ const Navbar = () => {
             </ul>
           </div>
 
-          <Link to="/" className={`charm-bold text-3xl ${location.pathname == '/' ? 'text-white' : 'text-black'} `}>
+          <Link
+            to="/"
+            className={`charm-bold text-3xl ${
+              location.pathname == "/" ? "text-white" : "text-[#5B58F2]"
+            }`}
+          >
             The Book Heaven
           </Link>
         </div>
@@ -98,7 +131,7 @@ const Navbar = () => {
         <div className="navbar-end flex gap-3 items-center">
           <ThemeToggle />
           {user ? (
-            <div className="flex gap-3 justify-center items-center">
+            <div className="flex flex-col md:flex-row gap-2 justify-center items-center">
               <div>
                 <img
                   className="w-14 rounded-full border-2 border-primary"

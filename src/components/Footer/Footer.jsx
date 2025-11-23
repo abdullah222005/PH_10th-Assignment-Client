@@ -33,12 +33,12 @@ const Footer = () => {
             <div className="flex justify-center items-center my-5 mb-10">
               <Newspaper />
               <input
-                className="w-111 ml-3 outline-0 bg-white p-4 rounded-3xl"
+                className="w-55 md:w-77 lg:w-111 ml-2 outline-0 bg-white p-4 rounded-3xl"
                 type="email"
                 placeholder="Input your email here"
                 name="email"
               />
-              <button className="ml-5 text-3xl text-gray-500 font-semibold hover:bg-[#68e6ff] px-6 py-2 pb-3 rounded-3xl cursor-pointer border-2 border-gray-300">
+              <button className="ml-3 text-lg md:text-2xl lg:text-3xl text-gray-500 font-semibold hover:bg-[#68e6ff] px-2 md:px-4 lg:px-6 py-2 pb-2.5 rounded-3xl cursor-pointer border-2 border-gray-300">
                 Subscribe
               </button>
             </div>
