@@ -123,9 +123,9 @@ const BookDetails = () => {
 
   return (
     <div className="max-w-5xl mx-auto py-14 px-4">
-      {/* Book Details Section */}
+      {}
       <div className="grid lg:grid-cols-2 gap-12 mb-16">
-        {/* Left: Image */}
+        {}
         <div className="flex justify-center">
           <img
             src={coverImage}
@@ -134,7 +134,7 @@ const BookDetails = () => {
           />
         </div>
 
-        {/* Right: Content */}
+        {}
         <div>
           <h1 className="text-4xl font-bold mb-4">{title}</h1>
 
@@ -146,7 +146,7 @@ const BookDetails = () => {
               <span className="font-semibold">Genre:</span> {genre}
             </p>
 
-            {/* Rating */}
+            {}
             <div className="flex items-center gap-2">
               <span className="font-semibold">Rating:</span>
               <div className="flex items-center gap-1">
@@ -183,14 +183,14 @@ const BookDetails = () => {
         </div>
       </div>
 
-      {/* Comments Section */}
+      {}
       <div className="border-t-2 pt-10">
         <div className="flex items-center gap-2 mb-6">
           <MessageCircle className="w-6 h-6 text-gray-700" />
           <h2 className="text-3xl font-bold">Comments ({comments.length})</h2>
         </div>
 
-        {/* Comment Form */}
+        {}
         {user ? (
           <form onSubmit={handleSubmitComment} className="mb-8">
             <div className="bg-gray-50 rounded-xl p-6 border-2 border-gray-200">
@@ -236,7 +236,7 @@ const BookDetails = () => {
           </div>
         )}
 
-        {/* Comments List */}
+        {}
         <div className="space-y-4">
           {comments.length === 0 ? (
             <div className="text-center py-10 text-gray-500">

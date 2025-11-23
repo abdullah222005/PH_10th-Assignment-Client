@@ -149,7 +149,7 @@ const SingleMyBook = ({ book, index, onBookUpdated, onBookDeleted }) => {
         </button>
       </td>
 
-      {/* UPDATE MODAL */}
+      {}
       <dialog ref={modalRef} className="modal modal-bottom sm:modal-middle">
         <div className="modal-box bg-amber-100 w-11/12 max-w-2xl">
           <h3 className="font-bold text-2xl mb-4">Update Book Information</h3>

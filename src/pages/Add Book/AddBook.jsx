@@ -45,12 +45,11 @@ const AddBook = () => {
 
     // Here you would typically send this data to your backend/database
     console.log("New Book Data:", newBook);
-    axios.post("http://localhost:1111/all-books", newBook)
-    .then(res=>{
-      if(res.data.insertedId){
-        toast.success('Successfully added the book')
+    axios.post("http://localhost:1111/all-books", newBook).then((res) => {
+      if (res.data.insertedId) {
+        toast.success("Successfully added the book");
       }
-    })
+    });
 
     // For now, just show success message
     toast.success("Book added successfully!");
@@ -70,7 +69,7 @@ const AddBook = () => {
           </h1>
 
           <form onSubmit={handleSubmit} className="space-y-4">
-            {/* Title */}
+            {}
             <div>
               <label className="label font-semibold text-secondary">
                 Book Title
@@ -84,7 +83,7 @@ const AddBook = () => {
               />
             </div>
 
-            {/* Author */}
+            {}
             <div>
               <label className="label font-semibold text-secondary">
                 Author Name
@@ -98,7 +97,7 @@ const AddBook = () => {
               />
             </div>
 
-            {/* Genre */}
+            {}
             <div>
               <label className="label font-semibold text-secondary">
                 Genre
@@ -112,7 +111,7 @@ const AddBook = () => {
               />
             </div>
 
-            {/* Rating */}
+            {}
             <div>
               <label className="label font-semibold text-secondary">
                 Rating (1-5)
@@ -134,7 +133,7 @@ const AddBook = () => {
               </select>
             </div>
 
-            {/* Summary */}
+            {}
             <div>
               <label className="label font-semibold text-secondary">
                 Summary
@@ -147,7 +146,7 @@ const AddBook = () => {
               ></textarea>
             </div>
 
-            {/* Cover Image URL */}
+            {}
             <div>
               <label className="label font-semibold text-secondary">
                 Cover Image URL
@@ -161,7 +160,7 @@ const AddBook = () => {
               />
             </div>
 
-            {/* User Info Display (Read-only) */}
+            {}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label className="label font-semibold text-secondary">
@@ -187,12 +186,12 @@ const AddBook = () => {
               </div>
             </div>
 
-            {/* Error Message */}
+            {}
             {error && (
               <p className="text-red-500 font-semibold text-center">{error}</p>
             )}
 
-            {/* Submit Button */}
+            {}
             <button
               type="submit"
               className="btn bg-[#0A192F] text-white w-full mt-6"

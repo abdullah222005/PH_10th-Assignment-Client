@@ -1,45 +1,57 @@
-import React, { use } from "react";
+// Navbar.jsx
+import React, { useContext } from "react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import AuthContext from "../../Auth/AuthContext";
 import { Tooltip } from "react-tooltip";
 import { toast } from "react-toastify";
+import ThemeToggle from "../ThemeToggle";
 
 const Navbar = () => {
-  const { user, logOut } = use(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
 
   const links = (
     <>
       <li>
-        <NavLink to="/">Home</NavLink>
+        <NavLink to="/" className="text-white">
+          Home
+        </NavLink>
       </li>
       <li>
-        <NavLink to="/aboutUs">About Us</NavLink>
+        <NavLink to="/aboutUs" className="text-white">
+          About Us
+        </NavLink>
       </li>
       <li>
-        <NavLink to="/all-books">All Books</NavLink>
+        <NavLink to="/all-books" className="text-white">
+          All Books
+        </NavLink>
       </li>
       <li>
-        <NavLink to="/add-book">Add Book</NavLink>
+        <NavLink to="/add-book" className="text-white">
+          Add Book
+        </NavLink>
       </li>
-      {
-        user && <li>
-        <NavLink to="/myBooks">My Books</NavLink>
-      </li>
-      }
-      
+      {user && (
+        <li>
+          <NavLink to="/myBooks" className="text-white">
+            My Books
+          </NavLink>
+        </li>
+      )}
     </>
   );
-  const handleLogOut =()=>{
+
+  const handleLogOut = () => {
     logOut()
-    .then(res => {
-      navigate('/');
-      toast.success('Logout Successful..!!');
-    })
-    .catch(err=> console.log(err)
-    )
-  }
+      .then(() => {
+        navigate("/");
+        toast.success("Logout Successful..!!");
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <div>
       <div
@@ -48,8 +60,9 @@ const Navbar = () => {
         } z-50 bg-transparent max-w-screen-xl mx-auto left-0 right-0`}
       >
         <div className="navbar-start">
+          {/* mobile dropdown */}
           <div className="dropdown">
-            <label tabIndex={0} className="btn btn-ghost lg:hidden">
+            <label tabIndex={0} className="btn btn-ghost lg:hidden text-white">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -65,7 +78,6 @@ const Navbar = () => {
                 />
               </svg>
             </label>
-
             <ul
               tabIndex={0}
               className="menu menu-sm dropdown-content mt-3 z-[50] p-2 shadow bg-base-100 rounded-box w-52"
@@ -74,7 +86,7 @@ const Navbar = () => {
             </ul>
           </div>
 
-          <Link to="/" className="charm-bold text-3xl">
+          <Link to="/" className="charm-bold text-3xl text-white">
             The Book Heaven
           </Link>
         </div>
@@ -82,12 +94,14 @@ const Navbar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 gap-10">{links}</ul>
         </div>
-        <div className="navbar-end">
+
+        <div className="navbar-end flex gap-3 items-center">
+          <ThemeToggle />
           {user ? (
             <div className="flex gap-3 justify-center items-center">
               <div>
                 <img
-                  className="w-14 rounded-full"
+                  className="w-14 rounded-full border-2 border-primary"
                   data-tooltip-id="profile-tooltip"
                   data-tooltip-content={user.displayName}
                   src={user.photoURL}
@@ -95,18 +109,18 @@ const Navbar = () => {
                 />
                 <Tooltip id="profile-tooltip" place="bottom" />
               </div>
-              <button onClick={handleLogOut} className="btn">
+              <button onClick={handleLogOut} className="btn btn-primary">
                 Log Out
               </button>
             </div>
           ) : (
-            <div>
-              <button className="mr-5 btn">
-                <Link to="/auth/Login">Login</Link>
-              </button>
-              <button className="mr-5 btn">
-                <Link to="/auth/Register">Register</Link>
-              </button>
+            <div className="flex flex-col md:flex-row gap-2 items-center">
+              <Link to="/auth/Login" className="btn btn-primary md:mr-3">
+                Login
+              </Link>
+              <Link to="/auth/Register" className="btn btn-primary">
+                Register
+              </Link>
             </div>
           )}
         </div>
