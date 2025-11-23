@@ -14,28 +14,28 @@ const Navbar = () => {
   const links = (
     <>
       <li>
-        <NavLink to="/" className="text-white">
+        <NavLink to="/" className={`${location.pathname == '/' ? 'text-white' : 'text-black'}`}>
           Home
         </NavLink>
       </li>
       <li>
-        <NavLink to="/aboutUs" className="text-white">
+        <NavLink to="/aboutUs" className={`${location.pathname == '/' ? 'text-white' : 'text-black'}`}>
           About Us
         </NavLink>
       </li>
       <li>
-        <NavLink to="/all-books" className="text-white">
+        <NavLink to="/all-books" className={`${location.pathname == '/' ? 'text-white' : 'text-black'}`}>
           All Books
         </NavLink>
       </li>
       <li>
-        <NavLink to="/add-book" className="text-white">
+        <NavLink to="/add-book" className={`${location.pathname == '/' ? 'text-white' : 'text-black'}`}>
           Add Book
         </NavLink>
       </li>
       {user && (
         <li>
-          <NavLink to="/myBooks" className="text-white">
+          <NavLink to="/myBooks" className={`${location.pathname == '/' ? 'text-white' : 'text-black'}`}>
             My Books
           </NavLink>
         </li>
@@ -86,7 +86,7 @@ const Navbar = () => {
             </ul>
           </div>
 
-          <Link to="/" className="charm-bold text-3xl text-white">
+          <Link to="/" className={`charm-bold text-3xl ${location.pathname == '/' ? 'text-white' : 'text-black'} `}>
             The Book Heaven
           </Link>
         </div>
