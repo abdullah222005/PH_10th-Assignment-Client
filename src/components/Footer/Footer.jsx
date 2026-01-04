@@ -2,7 +2,7 @@ import React from "react";
 import footerLine from "../../assets/footer-Line-1.png";
 import newsletter from "../../assets/newsletter.png";
 import { Newspaper } from "lucide-react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Footer = () => {
   const location = useLocation();
@@ -47,7 +47,9 @@ const Footer = () => {
 
         <div className="max-w-10/12 mx-auto footer sm:footer-horizontal mt-5">
           <nav>
-            <h1 className="charm-bold text-3xl">The Book Heaven</h1>
+            <Link to={'/'} className="hover:text-primary">
+              <h1 className="charm-bold text-3xl">The Book Heaven</h1>
+            </Link>
             <p className="text-[17px]">
               We are providing a online platform
               <br /> to serve people reading books, <br /> writing books since
@@ -56,35 +58,70 @@ const Footer = () => {
           </nav>
           <nav>
             <h6 className="footer-title">Services</h6>
-            <a className="link link-hover">Branding</a>
-            <a className="link link-hover">Design</a>
-            <a className="link link-hover">Marketing</a>
-            <a className="link link-hover">Advertisement</a>
+            <Link to="/all-books" className="link link-hover">
+              Branding
+            </Link>
+            <Link to="/all-books" className="link link-hover">
+              Design
+            </Link>
+            <Link to="/all-books" className="link link-hover">
+              Marketing
+            </Link>
+            <Link to="/all-books" className="link link-hover">
+              Advertisement
+            </Link>
           </nav>
+
           <nav>
             <h6 className="footer-title">Company</h6>
-            <a className="link link-hover">About us</a>
-            <a className="link link-hover">Contact</a>
-            <a className="link link-hover">Jobs</a>
-            <a className="link link-hover">Press kit</a>
+            <Link to="/aboutUs" className="link link-hover">
+              About us
+            </Link>
+            <Link to="/aboutUs" className="link link-hover">
+              Contact
+            </Link>
+            <Link to="/auth/Login" className="link link-hover">
+              Jobs
+            </Link>
+            <Link to="/aboutUs" className="link link-hover">
+              Press kit
+            </Link>
           </nav>
+
           <nav>
             <h6 className="footer-title">Legal</h6>
-            <a className="link link-hover">Terms of use</a>
-            <a className="link link-hover">Privacy policy</a>
-            <a className="link link-hover">Cookie policy</a>
+            <Link to="/aboutUs" className="link link-hover">
+              Terms of use
+            </Link>
+            <Link to="/aboutUs" className="link link-hover">
+              Privacy policy
+            </Link>
+            <Link to="/aboutUs" className="link link-hover">
+              Cookie policy
+            </Link>
           </nav>
+
           <nav>
             <h6 className="footer-title">Social</h6>
             <div className="grid grid-flow-col gap-4">
-              <a className="cursor-pointer">
+              <a
+                href="https://x.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="cursor-pointer"
+              >
                 <img
                   alt="svgImg"
                   className="hover:text-blue-400"
                   src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciICB2aWV3Qm94PSIwIDAgMzAgMzAiIHdpZHRoPSIzMHB4IiBoZWlnaHQ9IjMwcHgiPjxwYXRoIGQ9Ik0yNi4zNywyNmwtOC43OTUtMTIuODIybDAuMDE1LDAuMDEyTDI1LjUyLDRoLTIuNjVsLTYuNDYsNy40OEwxMS4yOCw0SDQuMzNsOC4yMTEsMTEuOTcxTDEyLjU0LDE1Ljk3TDMuODgsMjZoMi42NSBsNy4xODItOC4zMjJMMTkuNDIsMjZIMjYuMzd6IE0xMC4yMyw2bDEyLjM0LDE4aC0yLjFMOC4xMiw2SDEwLjIzeiIvPjwvc3ZnPg=="
                 />
               </a>
-              <a className="hover:text-blue-400 cursor-pointer">
+              <a
+                href="https://www.youtube.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-blue-400 cursor-pointer"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -95,7 +132,12 @@ const Footer = () => {
                   <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"></path>
                 </svg>
               </a>
-              <a className="hover:text-blue-400 cursor-pointer">
+              <a
+                href="https://www.facebook.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-blue-400 cursor-pointer"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"

@@ -36,6 +36,30 @@ const BookDetails = () => {
       .catch((err) => console.log(err));
   };
 
+  const handleWishlist = async() =>{
+    if(!user){
+      toast.error("Please Login First.");
+      return;
+    }
+    const payload = {
+      userEmail: user.email,
+      bookId: book._id,
+      status: "reading",
+      addedAt: new Date(),
+    }
+    try {
+      const res = await axios.post(
+        `https://the-book-heaven-server-omega.vercel.app/users-books`,
+        payload
+      );
+      if (res.data.insertedId) {
+        toast.success("Book added to your library");
+      }
+    } catch (error) {
+      toast.error("Book already exists in your library");
+    }
+  }
+
   // Handle comment submission
   const handleSubmitComment = async (e) => {
     e.preventDefault();
@@ -179,7 +203,10 @@ const BookDetails = () => {
           </div>
 
           <div className="mt-8 flex gap-4">
-            <button className="btn px-6 py-3 bg-[#FF5520] text-white rounded-xl shadow hover:bg-[#ff6b40]">
+            <button
+              onClick={handleWishlist}
+              className="btn px-6 py-3 bg-[#FF5520] text-white rounded-xl shadow hover:bg-[#ff6b40]"
+            >
               Add to Wishlist
             </button>
 
@@ -276,7 +303,7 @@ const BookDetails = () => {
                           {comment.userName}
                         </h4>
                         <p className="text-sm text-gray-500">
-                          {formatDate(comment.createdAt)}
+                          {new Date(comment.createdAt).toLocaleString()}
                         </p>
                       </div>
 

@@ -18,7 +18,7 @@ const LatestBooks = () => {
       <h1 className="text-3xl md:text-4xl text-center font-semibold mb-10 text-primary">
         Latest Books
       </h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {latestBooks.map((LBook) => (
           <SingleLatestBook LBook={LBook} key={LBook._id} />
         ))}

@@ -178,6 +178,64 @@ const AboutUs = () => {
           </div>
         </div>
       </div>
+
+      {/* Legal & Policies Section */}
+      <div className="pb-10 max-w-7xl mx-auto">
+        <h2 className="text-2xl md:text-4xl font-semibold text-center text-primary mb-10">
+          Legal & Policies
+        </h2>
+
+        <div className="space-y-4">
+          {/* Terms of Use */}
+          <div className="collapse collapse-arrow bg-base-200 dark:bg-base-300 rounded-xl">
+            <input type="checkbox" />
+            <div className="collapse-title text-lg font-semibold">
+              Terms of Use
+            </div>
+            <div className="collapse-content text-neutral/80 dark:text-secondary/90 leading-relaxed">
+              <p>
+                By accessing and using{" "}
+                <span className="font-semibold">The Book Heaven</span>, you
+                agree to use the platform responsibly and ethically. Users are
+                expected to respect intellectual property rights and refrain
+                from submitting harmful, misleading, or inappropriate content.
+              </p>
+            </div>
+          </div>
+
+          {/* Privacy Policy */}
+          <div className="collapse collapse-arrow bg-base-200 dark:bg-base-300 rounded-xl">
+            <input type="checkbox" />
+            <div className="collapse-title text-lg font-semibold">
+              Privacy Policy
+            </div>
+            <div className="collapse-content text-neutral/80 dark:text-secondary/90 leading-relaxed">
+              <p>
+                Your privacy is important to us. We collect only essential
+                information such as account details to provide our services. We
+                never sell or share your personal data with third parties
+                without your consent.
+              </p>
+            </div>
+          </div>
+
+          {/* Cookie Policy */}
+          <div className="collapse collapse-arrow bg-base-200 dark:bg-base-300 rounded-xl">
+            <input type="checkbox" />
+            <div className="collapse-title text-lg font-semibold">
+              Cookie Policy
+            </div>
+            <div className="collapse-content text-neutral/80 dark:text-secondary/90 leading-relaxed">
+              <p>
+                The Book Heaven uses cookies to enhance user experience, analyze
+                usage, and improve performance. By continuing to use our
+                platform, you consent to the use of cookies in accordance with
+                this policy.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

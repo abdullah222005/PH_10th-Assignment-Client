@@ -27,6 +27,20 @@ const LoginPage = () => {
       });
   };
 
+  const handleDemoLogin = () => {
+    const demoEmail = "demo@thebookheaven.com";
+    const demoPassword = "Demo@1234";
+
+    loginWithEP(demoEmail, demoPassword)
+      .then(() => {
+        toast.success("Logged in with Demo Account");
+        navigate(location.state || "/");
+      })
+      .catch(() => {
+        toast.error("Demo login failed");
+      });
+  };
+
   const handleGoogleSignIn = () => {
     loginWithGoogle()
       .then((rs) => {
@@ -103,6 +117,15 @@ const LoginPage = () => {
             <br />
             Or,
           </p>
+
+          <button
+            onClick={handleDemoLogin}
+            type="button"
+            className="btn btn-outline btn-primary w-full mb-2"
+          >
+            🚀 Explore with Demo Account
+          </button>
+
           <button
             onClick={handleGoogleSignIn}
             className="btn bg-accent text-black border-[#e5e5e5]"

@@ -14,7 +14,7 @@ const ResponsiveShowcase = () => {
       />
 
       {/* Content */}
-      <div className="relative max-w-10/12 mx-auto px-4 md:px-8 flex flex-col lg:flex-row items-center gap-10">
+      <div className="relative max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-10">
         {/* Text */}
         <div className="w-full lg:w-1/2 space-y-5 text-center lg:text-left">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary leading-tight">

@@ -8,19 +8,17 @@ const MyBooks = () => {
   const [loading, setLoading] = useState(true);
   const { user } = useContext(AuthContext);
 
-  const fetchMyBooks = async (email) => {
-    try {
-      setLoading(true);
-      const response = await axios.get(
-        `https://the-book-heaven-server-omega.vercel.app/myBooks?email=${email}`
-      );
-      setMyBooks(response.data);
-    } catch (error) {
-      console.error("Error fetching books:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
+const fetchMyBooks = async (email) => {
+  try {
+    setLoading(true);
+    const res = await axios.get(`/users-books/${email}`);
+    setMyBooks(res.data || []);
+  } catch (error) {
+    console.error("Error fetching books:", error);
+  } finally {
+    setLoading(false);
+  }
+};
 
   useEffect(() => {
     if (user?.email) {

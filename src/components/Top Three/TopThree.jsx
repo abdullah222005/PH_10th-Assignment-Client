@@ -46,7 +46,7 @@ const TopThree = () => {
 
   return (
     <section className="py-16 px-6 bg-base-200">
-      <div className="max-w-10/12 mx-auto">
+      <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
           <div className="flex items-center justify-center gap-3 mb-4">

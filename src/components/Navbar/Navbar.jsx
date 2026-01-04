@@ -1,5 +1,5 @@
 // Navbar.jsx
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import AuthContext from "../../Auth/AuthContext";
 import { Tooltip } from "react-tooltip";
@@ -11,14 +11,27 @@ const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
+  const [scrolled, setScrolled] = useState(false);
+  
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 555);
+    };
+    
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const navTextClass = scrolled ? "text-[#5B58F2]" : "text-white";
+
   const links = (
     <>
       <li>
         <NavLink
           to="/"
           className={`${
-            location.pathname == "/" ? "lg:text-white" : "text-[#5B58F2]"
-          } `}
+            location.pathname == "/" ? navTextClass : "text-primary"
+          }`}
         >
           Home
         </NavLink>
@@ -27,8 +40,8 @@ const Navbar = () => {
         <NavLink
           to="/aboutUs"
           className={`${
-            location.pathname == "/" ? "lg:text-white" : "text-[#5B58F2]"
-          } `}
+            location.pathname == "/" ? navTextClass : "text-primary"
+          }`}
         >
           About Us
         </NavLink>
@@ -37,8 +50,8 @@ const Navbar = () => {
         <NavLink
           to="/all-books"
           className={`${
-            location.pathname == "/" ? "lg:text-white" : "text-[#5B58F2]"
-          } `}
+            location.pathname == "/" ? navTextClass : "text-primary"
+          }`}
         >
           All Books
         </NavLink>
@@ -47,8 +60,8 @@ const Navbar = () => {
         <NavLink
           to="/add-book"
           className={`${
-            location.pathname == "/" ? "lg:text-white" : "text-[#5B58F2]"
-          } `}
+            location.pathname == "/" ? navTextClass : "text-primary"
+          }`}
         >
           Add Book
         </NavLink>
@@ -56,17 +69,18 @@ const Navbar = () => {
       {user && (
         <li>
           <NavLink
-            to="/myBooks"
+            to="/dashboard"
             className={`${
-              location.pathname == "/" ? "lg:text-white" : "text-[#5B58F2]"
-            } `}
+              location.pathname == "/" ? navTextClass : "text-primary"
+            }`}
           >
-            My Books
+            Dashboard
           </NavLink>
         </li>
       )}
     </>
   );
+
 
   const handleLogOut = () => {
     logOut()
@@ -78,11 +92,11 @@ const Navbar = () => {
   };
 
   return (
-    <div>
+    <div className="sticky top-0 z-50">
       <div
         className={`navbar ${
           location.pathname === "/" ? "absolute" : "relative"
-        } z-50 bg-transparent max-w-screen-xl mx-auto left-0 right-0`}
+        } z-50 bg-transparent max-w-7xl mx-auto left-0 right-0`}
       >
         <div className="navbar-start">
           {/* mobile dropdown */}
@@ -116,9 +130,7 @@ const Navbar = () => {
 
           <Link
             to="/"
-            className={`charm-bold text-3xl ${
-              location.pathname == "/" ? "text-white" : "text-[#5B58F2]"
-            }`}
+            className={`charm-bold text-3xl ${location.pathname== '/' ? navTextClass : "text-primary"}`}
           >
             The Book Heaven
           </Link>

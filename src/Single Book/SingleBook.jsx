@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const SingleBook = ({ book, index }) => {
   // Use the actual data structure if books array is empty during dev/testing
   const item = book || {
@@ -17,7 +19,9 @@ const SingleBook = ({ book, index }) => {
         {item.rating}
       </td>
       <td className="px-4 py-5 text-center">
-        <button className="btn btn-primary btn-sm">View Details</button>
+        <Link to={`/book-details/${book._id}`}>
+          <button className="btn btn-primary btn-sm">View Details</button>
+        </Link>
       </td>
     </tr>
   );
